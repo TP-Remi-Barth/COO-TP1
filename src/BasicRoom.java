@@ -2,20 +2,29 @@ import java.util.List;
 
 public class BasicRoom implements IRoom {
 
-	List<IPassage> passages;
+	protected List<IPassage> passages;
+	protected Player player = null;
 	
-	BasicRoom(List<IPassage> passages) {
+	public BasicRoom(List<IPassage> passages) {
 		this.passages = passages;
 	}
 
+	@Override
+	public void setPlayer(Player player){
+		this.player = player;
+	}
+	
+	@Override
 	public String take(Command cmd) {
 		return null;
 	}
 	
+	@Override
 	public String hit(Command cmd) {
 		return null;
 	}
 	
+	@Override
 	public String describe(Command cmd) {
 		
 		if(cmd.getParam(1)==null){
@@ -31,16 +40,18 @@ public class BasicRoom implements IRoom {
 		return IRoom.ErrorMessage;
 	}
 	
+	@Override
 	public String push(Command cmd) {
 		return null;
 	}
 	
+	@Override
 	public String trySomething(Command cmd) {
 		return null;
 	}
 	
+	@Override
 	public GoResult go(Command cmd) {
 		return null;
 	}
-	
 }

@@ -23,9 +23,10 @@ public class Dungeon {
 	}
 	
 	public String interpretCommand(Command cmd){
-
 		
 		String resultString;
+		
+		this.currentRoom.setPlayer(this.player);
 		
 		switch (cmd.getName()){
 

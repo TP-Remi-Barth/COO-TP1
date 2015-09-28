@@ -34,6 +34,8 @@ public interface IRoom {
 	
 	public static final String ErrorMessage = "Repeat again, I didn't understand.";
 
+	public void setPlayer(Player player);
+	
 	public String take(Command cmd);
 	
 	public String hit(Command cmd);
