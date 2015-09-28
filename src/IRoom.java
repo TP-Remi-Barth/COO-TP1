@@ -14,4 +14,6 @@ public interface IRoom {
 	
 	public String trySomething(Command cmd);
 	
+	public GoResult go(Command cmd);
+	
 }

@@ -58,7 +58,7 @@ public class Dungeon {
 			break;
 		
 		case "go":
-			Room.GoResult goResult = this.currentRoom.go(cmd);
+			IRoom.GoResult goResult = this.currentRoom.go(cmd);
 			if (goResult.hasSucceeded()){
 				this.currentRoom = goResult.getRoom();
 			}
