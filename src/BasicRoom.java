@@ -23,10 +23,12 @@ public class BasicRoom implements IRoom {
 		String describePassages = "";
 		for (IPassage p : passages) {
 			describePassages += p.getName() + " and ";
-				}
-		return "you see " + describePassages + "nothing else. You really thought there was infinite things in there ?";
+		}
+		return "you see " + describePassages + 
+				"nothing else. You really thought there was infinite things in there ?";
 	
 		}
+		return IRoom.ErrorMessage;
 	}
 	
 	public String push(Command cmd) {
