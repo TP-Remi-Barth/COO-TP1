@@ -32,7 +32,7 @@ public class Command {
 	 * @param n
 	 * @return the converted integer
 	 * @throws NumberFormatException if the string has not an integer format
-	 * @throws NullPointerEception if the n position is to high
+	 * @throws NullPointerEception if the n position is too high
 	 */
 	public int getParamAsInteger(int n){
 		String param = this.getParam(n);

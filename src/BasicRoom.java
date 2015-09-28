@@ -1,10 +1,10 @@
-import IRoom.GoResult;
+import java.util.List;
 
 public class BasicRoom implements IRoom {
 
-	List<Passage> passages;
+	List<IPassage> passages;
 	
-	ARoomBasic(List<Passage> passages) {
+	BasicRoom(List<IPassage> passages) {
 		this.passages = passages;
 	}
 
@@ -17,11 +17,16 @@ public class BasicRoom implements IRoom {
 	}
 	
 	public String describe(Command cmd) {
-		String describePassages =
-				for (Passage p : passages) {
-					p.getName() + " and ";
+		
+		if(cmd.getParam(1)==null){
+			
+		String describePassages = "";
+		for (IPassage p : passages) {
+			describePassages += p.getName() + " and ";
 				}
-		return "you see " + describePassages + "nothing else."
+		return "you see " + describePassages + "nothing else. You really thought there was infinite things in there ?";
+	
+		}
 	}
 	
 	public String push(Command cmd) {
@@ -33,7 +38,7 @@ public class BasicRoom implements IRoom {
 	}
 	
 	public GoResult go(Command cmd) {
-		return null;
+		return ;
 	}
 	
 }

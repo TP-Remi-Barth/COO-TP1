@@ -1,7 +1,38 @@
 public interface IRoom {
 
 	public static class GoResult {
+		
+		private IRoom room;
+		private String description;
+		
+		GoResult(IRoom room){
+			this.setRoom(room);
+		}
+		
+		public IRoom getRoom() {
+			return room;
+		}
+
+		public void setRoom(IRoom room) {
+			this.room = room;
+		}
+
+		public boolean hasSuceeded() {
+			if (this.getRoom() != null) {
+				return true;
+			}
+			else {
+				return false;
+			}
+		}
+		
+		public String getString() {
+			return this.description;
+		}
+		
 	}
+	
+	public static final String ErrorMessage = "Repeat again, I didn't understand.";
 
 	public String take(Command cmd);
 	
