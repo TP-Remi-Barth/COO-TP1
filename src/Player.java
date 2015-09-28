@@ -39,4 +39,13 @@ public class Player implements IGameObject {
 	public Inventory getInventory() {
 		return inventory;
 	}
+	
+	/**
+	 * Submit a 'use' command to the player
+	 * @param cmd
+	 * @return a string describing what happened
+	 */
+	public String use(Command cmd){
+		return "";
+	}
 }
