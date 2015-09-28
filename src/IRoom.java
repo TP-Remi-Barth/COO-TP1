@@ -1,9 +1,8 @@
 public interface IRoom {
 
 	public static class GoResult {
-		
 	}
-	
+
 	public String take(Command cmd);
 	
 	public String hit(Command cmd);
