@@ -11,10 +11,12 @@ public class Command {
 	}
 
 	/**
-	 * @return the name part of the command
+	 * @return the name part of the command,
+	 * 		or the empty string if there is no parameters
 	 */
 	public String getName(){
-		return this.getParam(0);
+		String name = this.getParam(0);
+		return name != null ? name : "";
 	}
 	
 	/**

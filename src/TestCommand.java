@@ -17,6 +17,14 @@ public class TestCommand {
 	}
 
 	@Test
+	public void testEmpty() {
+		Command cmd = new Command("  	");
+		assertEquals(cmd.getName(), "");
+		assertEquals(cmd.getParam(0), "");
+		assertEquals(cmd.count(), 1);
+	}
+		
+	@Test
 	public void testBasicWithSpace() {
 		Command cmd = new Command(" do  	");
 		assertEquals(cmd.getName(), "do");
