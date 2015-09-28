@@ -40,7 +40,7 @@ public class BasicRoom implements IRoom {
 	}
 	
 	public GoResult go(Command cmd) {
-		return ;
+		return null;
 	}
 	
 }
