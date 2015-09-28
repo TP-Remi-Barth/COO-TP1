@@ -50,11 +50,11 @@ public class Dungeon {
 			break;
 			
 		case "try": 
-			resultString = this.currentRooom.trySomething(cmd);
+			resultString = this.currentRoom.trySomething(cmd);
 			break;
 
 		case "inventory":
-			resultString = this.player.listInventory(cmd);
+			resultString = this.player.getInventory().list(cmd);
 			break;
 		
 		case "go":
@@ -64,9 +64,13 @@ public class Dungeon {
 			}
 			resultString = goResult.getString();
 			break;
-			
+		
+		case "":
+			resultString = "You are not really talkative...";
+			break;
+		
 		default:
-			resultString =  cmd.getErrorMessage()
+			resultString =  "Invalid command " + cmd.getName(); 
 		}
 		
 		return resultString;

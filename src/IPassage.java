@@ -9,7 +9,8 @@ public interface IPassage extends IGameObject {
 	/**
 	 * Get the room at the other side of the parameter [code]here[/code]
 	 * @param here
-	 * @return the room
+	 * @return the room or null if here is not one of
+	 * 		the two rooms of the passage
 	 */
 	public IRoom getOtherSideRoom(IRoom here);
 	
