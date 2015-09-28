@@ -2,10 +2,15 @@
 public class Game {
 	
 	private Dungeon[] dungeons;
-	private int currentDungeonIndex;
-	private Player player;
-		
-	private boolean stop;
+	private Player player = null;
+
+	private int currentDungeonIndex = 0;
+	private boolean stop = false;
+	
+	public Game(Dungeon[] dungeons, Player player){
+		this.dungeons = dungeons;
+		this.player = player;
+	}
 	
 	public Dungeon getCurrentDungeon(){
 		return this.dungeons[this.currentDungeonIndex];
@@ -26,8 +31,6 @@ public class Game {
 				// TODO: ask if the player want to continue
 			}
 		}
-		
-		
 	}
 
 	private boolean runCurrentDungeon() {
@@ -37,8 +40,10 @@ public class Game {
 		
 		while (!dungeon.isFinished()){
 			
-			String cmd = this.fetchUserCommand();
-			dungeon.interpretCommand(cmd);
+			Command cmd = this.fetchUserCommand();
+			String outputString = dungeon.interpretCommand(cmd);
+			this.showOutputStringToUser(outputString);
+			
 		}
 		
 		if (dungeon.isWon()){
@@ -52,7 +57,10 @@ public class Game {
 		
 	}
 
-	private String fetchUserCommand() {
+	private void showOutputStringToUser(String outputString) {
+	}
+
+	private Command fetchUserCommand() {
 		return null;
 	}
 }
