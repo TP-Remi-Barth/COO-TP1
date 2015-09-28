@@ -7,7 +7,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-public class TestBasicPassage {
+public class BasicPassageTest {
 
 	protected IRoom room1;
 	protected IRoom room2;
