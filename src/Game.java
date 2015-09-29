@@ -67,6 +67,7 @@ public class Game {
 	}
 
 	private Command fetchUserCommand() {
+		System.out.print("?> ");
 		String line = scanner.nextLine();
 		return new Command(line);
 	}

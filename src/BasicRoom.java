@@ -56,7 +56,7 @@ public class BasicRoom implements IRoom {
 			return "Try what ?";
 		}
 		String what = cmd.getParam(1);
-		if (what.equals("keys") || what.equals("keys")){
+		if (what.equals("keys") || what.equals("key")){
 			if (cmd.count() <= 2){
 				return "Try keys on which passage ?";
 			}
