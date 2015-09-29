@@ -41,7 +41,7 @@ public class LockedPassage extends BasicPassage {
 	public boolean tryUnlock(IItem item){
 		if (item instanceof Key){
 			Key key = (Key)item;
-			return key.getName() == this.keyName;
+			return key.getName().equals(this.keyName);
 		}
 		return false;
 	}

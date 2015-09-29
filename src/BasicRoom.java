@@ -32,15 +32,14 @@ public class BasicRoom implements IRoom {
 	@Override
 	public String describe(Command cmd) {
 		
-		if(cmd.getParam(1)==null){
+		if(cmd.getParam(1) == null){
 			
-		String describePassages = "";
-		for (IPassage p : passages) {
-			describePassages += p.getName() + " and ";
-		}
-		return "you see " + describePassages + 
-				"nothing else. You really thought there was infinite things in there ?";
-	
+			String describePassages = "";
+			for (IPassage p : passages) {
+				describePassages += p.getName() + " and ";
+			}
+			return "you see " + describePassages + 
+					"nothing else. You really thought there was infinite things in there ?";
 		}
 		return IRoom.ErrorMessage;
 	}
@@ -62,12 +61,13 @@ public class BasicRoom implements IRoom {
 			
 			for (IPassage p : passages) {
 				
-				if (cmd.getParam(1) == p.getName()) {
+				if (cmd.getParam(1).equals(p.getName())) {
 					
 					IRoom otherRoom = p.getOtherSideRoom(this);
 					
 					if(otherRoom != null) {
-						return new GoResult(otherRoom, otherRoom.describe(new Command("describe")));			
+						return new GoResult(otherRoom,
+							otherRoom.describe(new Command("describe")));			
 					}
 					
 				}
@@ -76,6 +76,6 @@ public class BasicRoom implements IRoom {
 			
 		}
 		
-		return null;
+		return new GoResult(null, "invalid syntax");
 	}
 }
