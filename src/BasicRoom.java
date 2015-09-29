@@ -15,6 +15,11 @@ public class BasicRoom implements IRoom {
 	}
 	
 	@Override
+	public boolean isExit(){
+		return false;
+	}
+	
+	@Override
 	public String take(Command cmd) {
 		return null;
 	}

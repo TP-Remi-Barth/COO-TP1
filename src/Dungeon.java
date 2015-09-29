@@ -16,10 +16,11 @@ public class Dungeon {
 		return false;
 	}
 	public boolean isWon(){
-		return false;
+		return this.player.isAlive() &&
+			this.currentRoom != null && this.currentRoom.isExit();
 	}
 	public boolean isLost(){
-		return false;
+		return this.player.isDead();
 	}
 	
 	public String interpretCommand(Command cmd){

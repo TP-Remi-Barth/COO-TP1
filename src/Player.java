@@ -6,6 +6,8 @@ public class Player implements IGameObject {
 	
 	private Inventory inventory;
 	
+	private int lifePoints = 10;
+	
 	/**
 	 * Create a player
 	 * @param name
@@ -47,5 +49,43 @@ public class Player implements IGameObject {
 	 */
 	public String use(Command cmd){
 		return "";
+	}
+	
+	/**
+	 * @return true if the player is alive
+	 */
+	public boolean isAlive(){
+		return lifePoints > 0;
+	}
+	
+	/**
+	 * @return true if the player is dead
+	 */
+	public boolean isDead(){
+		return !this.isAlive();
+	}
+	
+	/**
+	 * Add n life points to the player
+	 * @param n
+	 * @return
+	 */
+	public void giveLifePoints(int n){
+		this.lifePoints += n;
+	}
+	
+	/**
+	 * remove n life points to the player
+	 * @param n
+	 */
+	public void removeLifePoints(int n){
+		this.lifePoints -= n;	
+	}
+
+	/**
+	 * @return the number of lifePoints of the player
+	 */
+	public int getLifePoints(){
+		return this.lifePoints;
 	}
 }

@@ -36,6 +36,8 @@ public interface IRoom {
 
 	public void setPlayer(Player player);
 	
+	public boolean isExit();
+	
 	public String take(Command cmd);
 	
 	public String hit(Command cmd);
