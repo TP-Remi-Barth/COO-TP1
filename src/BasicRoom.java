@@ -53,7 +53,34 @@ public class BasicRoom implements IRoom {
 	
 	@Override
 	public String trySomething(Command cmd) {
-		return null;
+		if (cmd.count() <= 1){
+			return "Try what ?";
+		}
+		String what = cmd.getParam(1);
+		if (what.equals("keys") || what.equals("keys")){
+			if (cmd.count() <= 2){
+				return "Try keys on which passage ?";
+			}
+			IPassage passage = this.getPassageByName(cmd.getParam(2));
+			if (passage == null){
+				return "I don't know this passage";
+			}
+			else if (passage.isLocked() == false){
+				return "This passage isn't locked";
+			}
+			
+			for (Key key: this.player.getInventory().getKeys()){
+				key.use(passage);
+				if (passage.isLocked() == false){
+					return "Congratulation ! You have unlock the passage with the key '"
+							+ key.getName() + "' !";
+				}
+			}
+			return "It looks like you don't have the good key...";
+		}
+		else {
+			return "Try what ?";
+		}
 	}
 	
 	@Override
@@ -80,4 +107,19 @@ public class BasicRoom implements IRoom {
 		
 		return new GoResult(null, "invalid syntax");
 	}
+	
+	/**
+	 * Get a passage by its name
+	 * @param name
+	 * @return the passage or null if it doesn't exist
+	 */
+	protected IPassage getPassageByName(String name){
+		for (IPassage passage : this.passages){
+			if (passage.getName().equals(name)){
+				return passage;
+			}
+		}
+		return null;
+	}
+	
 }
