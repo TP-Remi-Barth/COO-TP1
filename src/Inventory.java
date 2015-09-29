@@ -1,3 +1,5 @@
+import java.util.LinkedList;
+import java.util.List;
 
 public class Inventory {
 	
@@ -9,5 +11,9 @@ public class Inventory {
 	 */
 	public String list(Command cmd){
 		return "";
+	}
+	
+	public List<Key> getKeys() {
+		return new LinkedList<Key>();
 	}
 }
