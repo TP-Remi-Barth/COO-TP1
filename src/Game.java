@@ -1,3 +1,5 @@
+import java.util.Arrays;
+import java.util.Scanner;
 
 public class Game {
 	
@@ -7,9 +9,12 @@ public class Game {
 	private int currentDungeonIndex = 0;
 	private boolean stop = false;
 	
+	private Scanner scanner;
+	
 	public Game(Dungeon[] dungeons, Player player){
 		this.dungeons = dungeons;
 		this.player = player;
+		this.scanner = new Scanner(System.in);
 	}
 	
 	public Dungeon getCurrentDungeon(){
@@ -47,20 +52,47 @@ public class Game {
 		}
 		
 		if (dungeon.isWon()){
-			// TODO: write something
+			this.showOutputStringToUser("You have succesfully cross the dungeon!");
 			return true;
 		}
 		else {
-			// TODO: write something
+			this.showOutputStringToUser("Sorry, you're dead...");
 			return false;
 		}
 		
 	}
 
 	private void showOutputStringToUser(String outputString) {
+		System.out.println(outputString);
 	}
 
 	private Command fetchUserCommand() {
-		return null;
+		String line = scanner.next();
+		return new Command(line);
 	}
+	
+	public static void main(String[] argv){
+		
+		Player player = new Player("Barth", "the boss is not me");
+
+		IPassage passage1 = new BasicPassage("door");
+		IPassage passage2 = new LockedPassage("locked-door", "key");
+
+		IRoom room1 = new BasicRoom(Arrays.asList(passage1));
+		IRoom room2 = new BasicRoom(Arrays.asList(passage1, passage2));
+		IRoom roomE = new ExitRoom(Arrays.asList(passage2));
+
+		passage1.setTwoRooms(room1, room2);
+		passage2.setTwoRooms(room2, roomE);
+		
+		Dungeon dungeon1 = new Dungeon(room1);
+		Dungeon[] dungeons = new Dungeon[]{ dungeon1 };
+		
+		
+		Game game = new Game(dungeons, player);
+		
+		game.run();
+	}
+	
+	
 }
