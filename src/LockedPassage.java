@@ -1,3 +1,4 @@
+import org.junit.experimental.theories.Theories;
 
 /**
  * See the IPassage documentation
@@ -16,6 +17,11 @@ public class LockedPassage extends BasicPassage {
 	public LockedPassage(String name, String keyName) {
 		super(name);
 		this.keyName = keyName;
+	}
+	
+	@Override
+	public String describe(){
+		return "The " + this.getName() + " is locked";
 	}
 	
 	/**

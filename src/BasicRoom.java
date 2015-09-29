@@ -14,7 +14,7 @@ public class BasicRoom implements IRoom {
 		this.player = player;
 	}
 	
-	//Peut être rajouter un addPassage à la room pour pouvoir faire apparaître des passages masqués
+	//Peut-être rajouter un addPassage à la room pour pouvoir faire apparaître des passages masqués
 	
 	@Override
 	public boolean isExit(){
@@ -35,13 +35,12 @@ public class BasicRoom implements IRoom {
 	public String describe(Command cmd) {
 		
 		if(cmd.getParam(1) == null){
-			
 			String describePassages = "";
 			for (IPassage p : passages) {
 				describePassages += p.getName() + " and ";
 			}
-			return "you see " + describePassages + 
-					"nothing else. You really thought there was infinite things in there ?";
+			return "you see " + describePassages + "nothing else.";
+
 		}
 		return IRoom.ErrorMessage;
 	}
@@ -85,26 +84,22 @@ public class BasicRoom implements IRoom {
 	
 	@Override
 	public GoResult go(Command cmd) {
-		
 		if (cmd.getParam(1) != null) {
-			
 			for (IPassage p : passages) {
-				
 				if (cmd.getParam(1).equals(p.getName())) {
-					
-					IRoom otherRoom = p.getOtherSideRoom(this);
-					
-					if(otherRoom != null) {
-						return new GoResult(otherRoom,
-							otherRoom.describe(new Command("describe")));			
+					if (p.isLocked()) {
+						return new GoResult(this, p.describe());
 					}
-					
+					else {
+						IRoom otherRoom = p.getOtherSideRoom(this);
+						if(otherRoom != null) {
+							return new GoResult(otherRoom,
+								otherRoom.describe(new Command("describe")));	
+						}
+					}
 				}
-			
 			}
-			
 		}
-		
 		return new GoResult(null, "invalid syntax");
 	}
 	
