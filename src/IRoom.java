@@ -17,18 +17,18 @@ public interface IRoom {
 		public void setRoom(IRoom room) {
 			this.room = room;
 		}
+		
+		public String getString() {
+			return this.description;
+		}
 
-		public boolean hasSuceeded() {
+		public boolean hasSucceeded() {
 			if (this.getRoom() != null) {
 				return true;
 			}
 			else {
 				return false;
 			}
-		}
-		
-		public String getString() {
-			return this.description;
 		}
 		
 	}
