@@ -4,7 +4,7 @@ public class BasicRoom implements IRoom {
 
 	List<IPassage> passages;
 	
-	BasicRoom(List<IPassage> passages) {
+	public BasicRoom(List<IPassage> passages) {
 		this.passages = passages;
 	}
 
@@ -40,7 +40,25 @@ public class BasicRoom implements IRoom {
 	}
 	
 	public GoResult go(Command cmd) {
-		return ;
+		
+		if (cmd.getParam(1) != null) {
+			
+			for (IPassage p : passages) {
+				
+				if (cmd.getParam(1) == p.getName()) {
+					
+					IRoom otherRoom = p.getOtherSideRoom(this);
+					
+					if(otherRoom != null) {
+						return new GoResult(otherRoom, otherRoom.describe(new Command("describe")));			
+					}
+					
+				}
+			
+			}
+			
+		}
+		
+		return null;
 	}
-	
 }

@@ -5,8 +5,9 @@ public interface IRoom {
 		private IRoom room;
 		private String description;
 		
-		GoResult(IRoom room){
+		GoResult(IRoom room, String description){
 			this.setRoom(room);
+			this.description = description;
 		}
 		
 		public IRoom getRoom() {
