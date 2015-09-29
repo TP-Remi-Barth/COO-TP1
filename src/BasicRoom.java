@@ -57,6 +57,25 @@ public class BasicRoom implements IRoom {
 	
 	@Override
 	public GoResult go(Command cmd) {
+		
+		if (cmd.getParam(1) != null) {
+			
+			for (IPassage p : passages) {
+				
+				if (cmd.getParam(1) == p.getName()) {
+					
+					IRoom otherRoom = p.getOtherSideRoom(this);
+					
+					if(otherRoom != null) {
+						return new GoResult(otherRoom, otherRoom.describe(new Command("describe")));			
+					}
+					
+				}
+			
+			}
+			
+		}
+		
 		return null;
 	}
 }

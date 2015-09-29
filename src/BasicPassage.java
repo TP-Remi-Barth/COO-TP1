@@ -5,7 +5,7 @@
  */
 public class BasicPassage implements IPassage {
 
-	protected String description = "a cold and dark passage";
+	protected String description = "A cold and dark passage";
 	protected String name;
 	protected IRoom room1 = null;
 	protected IRoom room2 = null;
