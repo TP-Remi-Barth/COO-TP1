@@ -7,9 +7,25 @@ public class BasicPassage implements IPassage {
 
 	protected String description = "A cold and dark passage";
 	protected String name;
-	protected IRoom room1;
-	protected IRoom room2;
+	protected IRoom room1 = null;
+	protected IRoom room2 = null;
 	
+	/**
+	 * Create a BasicPassage with a name, a default description,
+	 * and no rooms.
+	 * @param name
+	 */
+	public BasicPassage(String name){
+		this.name = name;
+	}
+	
+	public static BasicPassage createWithDescription(
+			String name, String description){
+		BasicPassage passage = new BasicPassage(name);
+		passage.description = description;
+		return passage;
+	}
+
 	@Override
 	public String describe() {
 		return this.description;
