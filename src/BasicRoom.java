@@ -14,7 +14,7 @@ public class BasicRoom implements IRoom {
 		this.player = player;
 	}
 	
-	//Peut être rajouter un addPassage à la room pour pouvoir faire apparaître des passages masqués
+	//Peut-être rajouter un addPassage à la room pour pouvoir faire apparaître des passages masqués
 	
 	@Override
 	public boolean isExit(){
