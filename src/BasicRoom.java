@@ -62,7 +62,7 @@ public class BasicRoom implements IRoom {
 			for (IPassage p : passages) {
 				describePassages += "\t- " + p.getName() + ": " + p.describe() + "\n";
 			}
-			describePassages += "No more pasages";
+			describePassages += "No more pasage";
 			return describePassages;
 		}
 	}
