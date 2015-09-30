@@ -1,3 +1,5 @@
+import java.util.List;
+
 public class Command {
 	
 	private String[] params;
@@ -46,9 +48,36 @@ public class Command {
 	}
 	
 	/**
+	 * Test the value of a parameter
+	 * @param n the position of the parameter
+	 * @param value the value to use in the test
+	 * @return true if the parameter matches the value, false otherwise
+	 */
+	public boolean paramIs(int n, String value){
+		String param = this.getParam(n);
+		return param != null && param.equals(value);
+	}
+	
+	/**
+	 * Test if a parameter equals some of the String list values
+	 * @param n
+	 * @param values
+	 * @return true if the parameter matches one of the value
+	 */
+	public boolean paramIsIn(int n, List<String> values){
+		for (String value : values){
+			if (this.paramIs(n, value)){
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	
+	/**
 	 * @return the total number of parameters including the name (the index 0)
 	 */
 	public int count(){
 		return this.params.length;
-	}
+	}	
 }

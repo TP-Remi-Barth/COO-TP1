@@ -1,5 +1,7 @@
 import static org.junit.Assert.*;
 
+import java.util.Arrays;
+
 import org.junit.Test;
 
 public class CommandTest {
@@ -71,5 +73,25 @@ public class CommandTest {
 			assertTrue(false);
 		}
 		catch (NullPointerException e){}
-	}	
+	}
+	
+	@Test
+	public void testMethodParamIs(){
+		Command cmd = new Command("try keys toto");
+		assertTrue(cmd.paramIs(1, "keys"));
+		assertFalse(cmd.paramIs(1, "key"));
+		assertFalse(cmd.paramIs(3, "toto"));
+	}
+	
+	@Test
+	public void testMethodParamIsIn(){
+		Command cmd = new Command("try keys toto");
+		assertTrue(cmd.paramIsIn(1, Arrays.asList("keys")));
+		assertFalse(cmd.paramIsIn(1, Arrays.asList("key")));
+		assertTrue(cmd.paramIsIn(1, Arrays.asList("key", "keys")));
+		assertTrue(cmd.paramIsIn(1, Arrays.asList("keys", "key")));
+		assertFalse(cmd.paramIsIn(1, Arrays.asList("key", "keyss")));
+		assertTrue(cmd.paramIsIn(1, Arrays.asList("toto", "keys", "key")));
+		assertFalse(cmd.paramIsIn(5, Arrays.asList("keys", "try", "toto")));
+	}
 }
