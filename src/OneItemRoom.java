@@ -19,7 +19,7 @@ public class OneItemRoom extends BasicRoom {
 	 * @param item
 	 */
 	public OneItemRoom(List<IPassage> passages, IItem item) {
-		super(passages);
+		super(passages,null);
 		this.item = item;
 	}
 

@@ -16,8 +16,8 @@ public class BasicPassageTest {
 	@Before
 	public void setUp() throws Exception {
 		this.passage = new BasicPassage("door", null);
-		this.room1 = new BasicRoom(Arrays.asList(this.passage));
-		this.room2 = new BasicRoom(Arrays.asList(this.passage));
+		this.room1 = new BasicRoom(Arrays.asList(this.passage),null);
+		this.room2 = new BasicRoom(Arrays.asList(this.passage),null);
 		this.passage.setTwoRooms(this.room1, this.room2);
 	}
 
@@ -29,7 +29,7 @@ public class BasicPassageTest {
 	public void test() {
 		assertTrue(this.passage.getOtherSideRoom(this.room1) == this.room2);
 		assertTrue(this.passage.getOtherSideRoom(this.room2) == this.room1);
-		BasicRoom otherRoom = new BasicRoom(new LinkedList<IPassage>());
+		BasicRoom otherRoom = new BasicRoom(new LinkedList<IPassage>(), null);
 		assertNull(this.passage.getOtherSideRoom(otherRoom));
 		assertFalse(this.passage.isLocked());
 	}

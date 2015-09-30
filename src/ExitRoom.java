@@ -3,7 +3,7 @@ import java.util.List;
 public class ExitRoom extends BasicRoom {
 
 	public ExitRoom(List<IPassage> passages) {
-		super(passages);
+		super(passages, null);
 	}
 
 	public boolean isExit(){
