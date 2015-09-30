@@ -1,5 +1,3 @@
-
-
 /**
  * See the IPassage documentation
  * @author barth

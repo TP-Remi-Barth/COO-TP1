@@ -94,13 +94,14 @@ public class BasicRoom implements IRoom {
 						IRoom otherRoom = p.getOtherSideRoom(this);
 						if(otherRoom != null) {
 							return new GoResult(otherRoom,
-								otherRoom.describe(new Command("describe")));	
+								"You arrive in a new room . " + 
+							otherRoom.describe(new Command("describe")));	
 						}
 					}
 				}
 			}
 		}
-		return new GoResult(null, "invalid syntax");
+		return new GoResult(null, "Go where ? I don't know that place.");
 	}
 	
 	/**
