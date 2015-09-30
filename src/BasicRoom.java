@@ -4,11 +4,18 @@ public class BasicRoom implements IRoom {
 
 	protected List<IPassage> passages;
 	protected Player player = null;
+	protected String name;
 	
-	public BasicRoom(List<IPassage> passages) {
+	public BasicRoom(List<IPassage> passages, String name) {
 		this.passages = passages;
+		this.name = name;
 	}
 
+	@Override
+	public String getName() {
+		return this.name;
+	}
+	
 	@Override
 	public void setPlayer(Player player){
 		this.player = player;

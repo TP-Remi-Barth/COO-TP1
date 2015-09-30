@@ -38,13 +38,33 @@ public interface IRoom {
 		public boolean hasSucceeded() {
 			return this.getRoom() != null;
 		}
+
+		@Override
+		public boolean equals(Object obj) {
+			if (!(obj instanceof GoResult)){
+				return false;
+			}
+			GoResult other = (GoResult) obj;
+			if (description == null) {
+				if (other.description != null)
+					return false;
+			} else if (!description.equals(other.description))
+				return false;
+			if (room == null) {
+				if (other.room != null)
+					return false;
+			} else if (!room.equals(other.room))
+				return false;
+			return true;
+		}
 		
 	}
 	/**
 	 * The error message that receive the user when he says something wrong
 	 */
 	public static final String ErrorMessage = "Repeat again, I didn't understand.";
-
+	
+	public String getName();
 
 	public void setPlayer(Player player);
 	
