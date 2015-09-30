@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.List;
 
 public class BasicRoom implements IRoom {
@@ -23,31 +24,56 @@ public class BasicRoom implements IRoom {
 	
 	@Override
 	public String take(Command cmd) {
-		return null;
+		return "That did not work";
 	}
 	
 	@Override
 	public String hit(Command cmd) {
-		return null;
+		return "Wait for the next level";
 	}
 	
 	@Override
 	public String describe(Command cmd) {
 		
+		String result = "";
+		
 		if(cmd.getParam(1) == null){
-			String describePassages = "";
-			for (IPassage p : passages) {
-				describePassages += p.getName() + " and ";
-			}
-			return "you see " + describePassages + "nothing else.";
-
+			result = this.describeAll();
 		}
-		return IRoom.ErrorMessage;
+		else if (cmd.paramIsIn(1, Arrays.asList("passage", "passages"))){
+			result = this.describePassages();
+		}
+		else if (cmd.paramIsIn(1, Arrays.asList("item", "items"))){
+			result = this.describeItems();
+		}
+		return result;
+	}
+
+	protected String describeItems() {
+		return "There is no item in this room";
+	}
+
+	protected String describePassages() {
+		if (passages.size() == 0){
+			return "there is no passage";
+		}
+		else {
+			String describePassages = "You see some passages:\n";
+			for (IPassage p : passages) {
+				describePassages += "\t- " + p.getName() + ": " + p.describe() + "\n";
+			}
+			describePassages += "No more pasages";
+			return describePassages;
+		}
+	}
+
+	protected String describeAll() {
+		return this.describePassages() + "\n" + this.describeItems();
 	}
 	
 	@Override
 	public String push(Command cmd) {
-		return null;
+		return "";
 	}
 	
 	@Override
@@ -68,14 +94,16 @@ public class BasicRoom implements IRoom {
 				return "This passage isn't locked";
 			}
 			
+			String result = "";
 			for (Key key: this.player.getInventory().getKeys()){
+				result += "trying " + key.getName() + "...\n";
 				key.use(passage);
 				if (passage.isLocked() == false){
-					return "Congratulation ! You have unlock the passage with the key '"
+					return result + "Congratulation ! You have unlock the passage with the key '"
 							+ key.getName() + "' !";
 				}
 			}
-			return "It looks like you don't have the good key...";
+			return result + "It looks like you don't have the good key...";
 		}
 		else {
 			return "Try what ?";
@@ -88,7 +116,7 @@ public class BasicRoom implements IRoom {
 			for (IPassage p : passages) {
 				if (cmd.getParam(1).equals(p.getName())) {
 					if (p.isLocked()) {
-						return new GoResult(this, p.describe());
+						return new GoResult(this, "Impossible, the passage is locked");
 					}
 					else {
 						IRoom otherRoom = p.getOtherSideRoom(this);

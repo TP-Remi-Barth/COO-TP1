@@ -10,16 +10,17 @@ public class LockedPassage extends BasicPassage {
 	/**
 	 * Create a LockedPassage
 	 * @param name
+	 * @param description
 	 * @param keyName the name of the key that unlocks the passage
 	 */
-	public LockedPassage(String name, String keyName) {
-		super(name);
+	public LockedPassage(String name, String description, String keyName) {
+		super(name, description);
 		this.keyName = keyName;
 	}
 	
 	@Override
 	public String describe(){
-		return "The " + this.getName() + " is locked";
+		return this.description + (this.locked ? "(locked)" : "(unlocked)");
 	}
 	
 	/**
@@ -45,7 +46,10 @@ public class LockedPassage extends BasicPassage {
 	public boolean tryUnlock(IItem item){
 		if (item instanceof Key){
 			Key key = (Key)item;
-			return key.getName().equals(this.keyName);
+			if (key.getName().equals(this.keyName)){
+				this.forceUnlock();
+				return true;
+			}
 		}
 		return false;
 	}

@@ -13,7 +13,7 @@ public class Dungeon {
 	}
 	
 	public boolean isFinished(){
-		return false;
+		return this.isWon() || this.isLost();
 	}
 	public boolean isWon(){
 		return this.player.isAlive() &&

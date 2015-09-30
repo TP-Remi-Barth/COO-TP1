@@ -15,7 +15,7 @@ public class BasicPassageTest {
 
 	@Before
 	public void setUp() throws Exception {
-		this.passage = new BasicPassage("door");
+		this.passage = new BasicPassage("door", null);
 		this.room1 = new BasicRoom(Arrays.asList(this.passage));
 		this.room2 = new BasicRoom(Arrays.asList(this.passage));
 		this.passage.setTwoRooms(this.room1, this.room2);

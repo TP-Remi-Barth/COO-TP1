@@ -6,14 +6,16 @@
 public class Key implements IItem {
 	
 	protected String name;
+	protected String description;
 	
-	public Key(String name){
+	public Key(String name, String description){
 		this.name = name;
+		this.description = description;
 	}
-	
+
 	@Override
 	public String describe() {
-		return "a dirty and rusted key";
+		return this.description;
 	}
 
 	@Override
