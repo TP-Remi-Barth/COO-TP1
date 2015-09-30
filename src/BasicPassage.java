@@ -11,21 +11,18 @@ public class BasicPassage implements IPassage {
 	protected IRoom room2 = null;
 	
 	/**
-	 * Create a BasicPassage with a name, a default description,
+	 * Create a BasicPassage with a name, a default description if null,
 	 * and no rooms.
 	 * @param name
+	 * @param description
 	 */
-	public BasicPassage(String name){
+	public BasicPassage(String name, String description){
 		this.name = name;
+		if (description != null){
+			this.setDescription(description);
+		}
 	}
 	
-	public static BasicPassage createWithDescription(
-			String name, String description){
-		BasicPassage passage = new BasicPassage(name);
-		passage.description = description;
-		return passage;
-	}
-
 	@Override
 	public String describe() {
 		return this.description;
@@ -70,4 +67,7 @@ public class BasicPassage implements IPassage {
 		return false;
 	}
 
+	public void setDescription(String description){
+		this.description = description;
+	}
 }

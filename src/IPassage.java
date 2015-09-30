@@ -32,5 +32,4 @@ public interface IPassage extends IGameObject {
 	 * @return true if that succeeded
 	 */
 	public boolean tryUnlock(IItem item);
-	
 }

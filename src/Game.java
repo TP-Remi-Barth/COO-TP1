@@ -36,13 +36,22 @@ public class Game {
 				// TODO: ask if the player want to continue
 			}
 		}
+		
+		if (this.stop){
+			this.showOutputStringToUser("Game Over");
+		}
+		else {
+			this.showOutputStringToUser("End of Game. You win !");
+		}
 	}
 
 	private boolean runCurrentDungeon() {
 		Dungeon dungeon = this.getCurrentDungeon();
 		
 		dungeon.setPlayer(this.player);
-		
+		this.showOutputStringToUser(
+				dungeon.interpretCommand(new Command("describe")));
+
 		while (!dungeon.isFinished()){
 			
 			Command cmd = this.fetchUserCommand();
@@ -76,24 +85,27 @@ public class Game {
 		
 		Player player = new Player("Barth", "the boss is not me");
 
-		IPassage passage1 = new BasicPassage("door");
-		IPassage passage2 = new LockedPassage("locked-door", "key");
-
-		IRoom room1 = new BasicRoom(Arrays.asList(passage1));
+		IPassage passage1 = new BasicPassage("door", "a simple wood door");
+		IPassage passage2 = new LockedPassage("locked-door", "a fat iron door", "golden-key");
+		IPassage passage3 = new BasicPassage("tunnel",
+				"a long and earthy tunnel");
+		
+		IItem key1 = new Key("golden-key", "a golden but dirty key, seems very old");
+		
+		IRoom room1 = new BasicRoom(Arrays.asList(passage1, passage3));
 		IRoom room2 = new BasicRoom(Arrays.asList(passage1, passage2));
+		IRoom room3 = new OneItemRoom(Arrays.asList(passage3), key1);
 		IRoom roomE = new ExitRoom(Arrays.asList(passage2));
 
 		passage1.setTwoRooms(room1, room2);
 		passage2.setTwoRooms(room2, roomE);
+		passage3.setTwoRooms(room1, room3);
 		
 		Dungeon dungeon1 = new Dungeon(room1);
 		Dungeon[] dungeons = new Dungeon[]{ dungeon1 };
-		
 		
 		Game game = new Game(dungeons, player);
 		
 		game.run();
 	}
-	
-	
 }
