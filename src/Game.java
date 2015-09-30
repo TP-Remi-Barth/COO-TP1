@@ -92,8 +92,8 @@ public class Game {
 		
 		IItem key1 = new Key("golden-key", "a golden but dirty key, seems very old");
 		
-		IRoom room1 = new BasicRoom(Arrays.asList(passage1, passage3));
-		IRoom room2 = new BasicRoom(Arrays.asList(passage1, passage2));
+		IRoom room1 = new BasicRoom(Arrays.asList(passage1, passage3), null);
+		IRoom room2 = new BasicRoom(Arrays.asList(passage1, passage2), null);
 		IRoom room3 = new OneItemRoom(Arrays.asList(passage3), key1);
 		IRoom roomE = new ExitRoom(Arrays.asList(passage2));
 

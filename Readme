@@ -1,0 +1,33 @@
+Barhélémy DELEMOTTE
+Rémi Bocquet
+Groupe 3
+-----------------------
+TP1 COO
+-----------------------
+
+To launch the game: java -jar ./game.jar
+
+then a command prompt appears "?> "
+
+you can type:
+    - "describe" to describe the room entirely
+    - "describe items" to describe only the items of the room
+    - "describe passages" to describe only the passages of the room
+
+    - "go <passage-name>" to go through a passage
+
+    - "inventory" to list your inventory
+    - "inventory keys" to list only your keys
+
+    - "take" to take all the items in the room
+    - "take <item-name>" to take one item in the room
+
+    - "use <item-name>" to use an item in your inventory on yourself
+
+    - "try keys <passage-name>" to try all your keys on a specific passage
+
+    - "hit <monster-name>" to hit a specific monster (not yet implemented)
+
+    - "push <button-name>" to push a button of the room (not yet implemented)
+ 
+    
