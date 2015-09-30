@@ -34,15 +34,26 @@ public class BasicRoom implements IRoom {
 	@Override
 	public String describe(Command cmd) {
 		
-		if(cmd.getParam(1) == null){
+		String passageName = cmd.getParam(1);
+		
+		if(passageName == null){
 			String describePassages = "";
 			for (IPassage p : passages) {
 				describePassages += p.getName() + " and ";
 			}
-			return "you see " + describePassages + "nothing else.";
+			return "You see " + describePassages + "nothing else.";
 
 		}
-		return IRoom.ErrorMessage;
+		else {
+			IPassage passage = this.getPassageByName(passageName);
+			
+			if (passage == null){
+				return "There is no passage named like this";
+			}
+			else {
+				return passage.describe();
+			}
+		}
 	}
 	
 	@Override
