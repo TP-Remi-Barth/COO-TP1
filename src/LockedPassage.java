@@ -1,6 +1,5 @@
 /**
- * See the IPassage documentation
- * @author barth
+ * A passage that is locked. Need a key to unlock it.
  */
 public class LockedPassage extends BasicPassage {
 

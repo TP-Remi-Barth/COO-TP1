@@ -2,6 +2,9 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * The inventory of the player
+ */
 public class Inventory {
 	
 	/**
@@ -9,6 +12,9 @@ public class Inventory {
 	 */
 	private List<IItem> items;
 	
+	/**
+	 * Create an empty inventory
+	 */
 	public Inventory(){
 		this.items = new LinkedList<IItem>();
 	}
@@ -32,10 +38,19 @@ public class Inventory {
 		return this.listSyntaxError(cmd);
 	}
 	
+	/**
+	 * @param cmd the user command (not used)
+	 * @return the error string used when the 'list' command is invalid
+	 */
 	private String listSyntaxError(Command cmd) {
 		return "Your bag says: \"Quezako ?\"";
 	}
 
+	/**
+	 * List only the keys of the inventory
+	 * @param cmd the user command
+	 * @return the string that describes the keys list
+	 */
 	private String listKeys(Command cmd) {
 		String result = "Your bag says: \"I'm looking for your keys, wait...\"\n";
 		List<Key> keys = this.getKeys();
@@ -51,6 +66,10 @@ public class Inventory {
 		return result;
 	}
 
+	/**
+	 * List all the items of the inventory
+	 * @return the string that describes this list
+	 */
 	private String listAll() {
 		String result = "";
 		if (this.items.size() == 0){

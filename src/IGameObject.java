@@ -1,4 +1,7 @@
 
+/**
+ * Base interface of many objects of the project
+ */
 public interface IGameObject {
 
 	/**

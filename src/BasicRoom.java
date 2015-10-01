@@ -1,12 +1,20 @@
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * A basic room that contains a list of passages.
+ */
 public class BasicRoom implements IRoom {
 
 	protected List<IPassage> passages;
 	protected Player player = null;
 	protected String name;
 	
+	/**
+	 * Create a BasicRoom with a list of passages and a name
+	 * @param passages the list of passage
+	 * @param name the name of the room (can be null)
+	 */
 	public BasicRoom(List<IPassage> passages, String name) {
 		this.passages = passages;
 		this.name = name;
@@ -21,8 +29,6 @@ public class BasicRoom implements IRoom {
 	public void setPlayer(Player player){
 		this.player = player;
 	}
-	
-	//Peut-être rajouter un addPassage à la room pour pouvoir faire apparaître des passages masqués
 	
 	@Override
 	public boolean isExit(){
@@ -56,10 +62,22 @@ public class BasicRoom implements IRoom {
 		return result;
 	}
 
+	/**
+	 * Protected method that describe the items in the room.
+	 * This method is used by BasicRoom.describe and might be override by
+	 * child-classes.
+	 * @return the string that describes the items
+	 */
 	protected String describeItems() {
 		return "There is no item in this room";
 	}
 
+	/**
+	 * Protected method that describe the passages of the room.
+	 * This method is used by BasicRoom.describe and might be override by
+	 * child-classes.
+	 * @return the string that describes the passages
+	 */
 	protected String describePassages() {
 		if (passages.size() == 0){
 			return "there is no passage";
@@ -74,6 +92,10 @@ public class BasicRoom implements IRoom {
 		}
 	}
 
+	/**
+	 * Describes passages, then items.
+	 * @return the description string
+	 */
 	protected String describeAll() {
 		return this.describePassages() + "\n" + this.describeItems();
 	}
@@ -152,5 +174,4 @@ public class BasicRoom implements IRoom {
 		}
 		return null;
 	}
-	
 }

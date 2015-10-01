@@ -1,4 +1,7 @@
 
+/**
+ * Interface for passages
+ */
 public interface IPassage extends IGameObject {
 
 	/**

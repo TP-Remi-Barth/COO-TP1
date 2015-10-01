@@ -1,13 +1,17 @@
 
 /**
- * See the IItem interface for a complete documentation
- * @author barth
+ * Class for the key item
  */
 public class Key implements IItem {
 	
 	protected String name;
 	protected String description;
 	
+	/**
+	 * Create a key
+	 * @param name the reliable name of the key
+	 * @param description the description of the key
+	 */
 	public Key(String name, String description){
 		this.name = name;
 		this.description = description;

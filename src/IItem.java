@@ -1,4 +1,7 @@
 
+/**
+ * Interface for all items
+ */
 public interface IItem extends IGameObject {
 	
 	/**

@@ -1,10 +1,7 @@
+/**
+ * Interface for the rooms
+ */
 public interface IRoom {
-
-	/**
-	 * 
-	 * @author ckiltolier
-	 *
-	 */
 	
 	/**
 	 * Here is a class into another class
@@ -15,19 +12,34 @@ public interface IRoom {
 		private IRoom room;
 		private String description;
 		
+		/**
+		 * Create a IRoom.GoResult
+		 * @param room the new room or null if the go has failed
+		 * @param description the description of what happened
+		 */
 		public GoResult(IRoom room, String description){
 			this.setRoom(room);
 			this.description = description;
 		}
 		
+		/**
+		 * @return the new room
+		 */
 		public IRoom getRoom() {
 			return room;
 		}
 
+		/**
+		 * set the new room or null
+		 * @param room the room
+		 */
 		public void setRoom(IRoom room) {
 			this.room = room;
 		}
 		
+		/**
+		 * @return the description string of what happened
+		 */
 		public String getString() {
 			return this.description;
 		}
@@ -64,8 +76,15 @@ public interface IRoom {
 	 */
 	public static final String ErrorMessage = "Repeat again, I didn't understand.";
 	
+	/**
+	 * @return the name of the room
+	 */
 	public String getName();
 
+	/**
+	 * Set the current player
+	 * @param player the player
+	 */
 	public void setPlayer(Player player);
 	
 	/**
@@ -123,5 +142,4 @@ public interface IRoom {
 	 * @return a string which describes what's going on
 	 */
 	public GoResult go(Command cmd);
-	
 }

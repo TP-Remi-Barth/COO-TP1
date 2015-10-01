@@ -1,7 +1,6 @@
 
 /**
- * See the IPassage documentation
- * @author barth
+ * A basic passage with no special features
  */
 public class BasicPassage implements IPassage {
 
@@ -67,6 +66,10 @@ public class BasicPassage implements IPassage {
 		return false;
 	}
 
+	/**
+	 * add a custom description
+	 * @param description
+	 */
 	public void setDescription(String description){
 		this.description = description;
 	}

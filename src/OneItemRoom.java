@@ -2,12 +2,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * 
- */
-
-/**
- * @author barth
- *
+ * A room that contains one item to take
  */
 public class OneItemRoom extends BasicRoom {
 

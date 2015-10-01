@@ -1,4 +1,6 @@
-
+/**
+ * The player class
+ */
 public class Player implements IGameObject {
 
 	private String name;
